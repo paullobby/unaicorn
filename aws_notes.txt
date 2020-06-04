@@ -1,4 +1,0 @@
-ssh -i unaicorn-key.pen ubuntu@ec2-18-221-171-64.us-east-2.compute.amazonaws.com
-
-chmod 400 /Users/hans/Desktop/Main/WebDev/python/django-practice/titanic_ML/unaicorn-key.pem
-
