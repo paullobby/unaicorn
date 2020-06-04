@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en',dir='ltr'>
+    <head>
+        <meta charset-'utf-8'>
+        <title>Titanic Predict Home</title>
+        {% load static%}
+        <link rel='stylesheet' href="{% static 'main.css'%}">
+    </head>
+    <body>
+        <h1>This is our home page for Titanic</h1>
+        <h3>See if you could survive from Titanic based on our Machine Learning Algo</h3>
+        
+        <form  action="{% url 'result' %}">
+          {% csrf_token %}
+            <p>Pclass - proxy social class: upper=1, middle=2, lower=3</p>
+            <input type="text" name="pclass">
+            <p>Sex: male=0, female=1</p>
+            <input type="text" name="sex">
+            <p>Age: (median=28, mean=30)</p>
+            <input type="text" name="age">
+            <p>Sibsp: # of siblings / spouses aboard the Titanic</p>
+            <input type="text" name="sibsp">
+            <p>parch: # of parents / children aboard the Titanic:</p>
+            <input type="text" name="parch">
+            <p>Fare: Passenger fare (median=14, mean=32, min=0, max=512)</p>
+            <input type="text" name="fare">
+            <p>Embarked location - Port of Embarkation: Southampton=0, Cherbourg=1, Queenstown=2</p>
+            <input type="text" name="embarked">
+            <p>Title: 'Mr'=0, 'Mrs'=1, 'Miss'=2, 'Master'=3 ,'Royalty'=4, 'Rev'=5 ,'Dr'=6, 'Officer'=7</p>
+            <input type="text" name="title">
+            <br>
+            <br>
+            <input type="submit">
+        </form>
+        <p>{{a}}</p>
+    </body>
+</html>
