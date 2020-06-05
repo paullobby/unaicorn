@@ -1,4 +1,63 @@
-ssh -i unaicorn-key.pen ubuntu@ec2-18-221-171-64.us-east-2.compute.amazonaws.com
 
-chmod 400 /Users/hans/Desktop/Main/WebDev/python/django-practice/titanic_ML/unaicorn-key.pem
+UPLOAD STUFF TO GITHUB
+1. git init
+2. git remote add origin (github url)
+3. git add- A (all of the stuff)  --- from your working directory to staging area
+4. git commit -a                  --- from staging area to local repo
+5. git push -u origin master      --- from local repot to remote repo
+
+For changing Stuff on Github from local:
+1. cd to dir first
+2. git status
+3. git add -A
+4. git commit -m 'message'
+3. git pull
+4. git push
+
+For changing Stuff on AWS EC2 from updated Github, do the exact same things:
+1. cd to dir first
+2. git add -A
+3. git pull
+
+
+
+ON AWS:
+1. EC2 Instance - launch instance (free) - Ubuntu server - t2 micro - KEY PAI
+2. chmod 400 /Users/hans/Desktop/Main/WebDev/python/django-practice/titanic_ML/unaicorn-key.pem
+3. ssh -i unaicorn-key.pen ubuntu@ec2-18-221-171-64.us-east-2.compute.amazonaws.com
+
+
+FROM GITHUB TO EC2:
+1. git clone (github url)
+
+SET UP MACHINE:
+1. sudo apt-get update
+2. sudo apt-get install python3-pip python3-dev... 
+3. pip3 install django gunicorn psycopy2 sklearn
+In Django settings.py file, add 'IPv4 Public IP' to ALLOWED_HOSTS
+
+AWS:
+1. AWS NETWORK & SECURITY:
+ Security group - create security group: (TCP Port=8000 Source)
+2. AWS Instance:
+ Running instance - network - change security group - choose & assign
+3. Ubuntu cmd:
+ python3 manage.py runserver 0.0.0.0:8000
+4. Broswer
+
+
+GUNICORN:
+gunicorn --bind 0.0.0.0:8000 [Name].wsgi
+
+create a gunicorn configuration file:
+sudo vim /etc/systemd/system/gunicorn.service
+
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+
+
+NGINX:
+Create a file:
+sudo vim/etc/nginx/sites-available/[Name]
+
 
